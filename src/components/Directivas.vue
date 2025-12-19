@@ -104,6 +104,7 @@ export default {
       this.apellido = null;
       this.nombre1 = null;
       this.apellido1 = null;
+      //esta es una prueba para el commit
 
     },
   },
