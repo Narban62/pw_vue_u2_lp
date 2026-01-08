@@ -1,6 +1,6 @@
 <template>
-  <PokemonImagen/>
-  <PokemonOpciones/>
+  <PokemonImagen :pokemonId="282"/>
+  <PokemonOpciones />
 </template>
 
 <script>
