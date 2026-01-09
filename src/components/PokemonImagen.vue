@@ -9,6 +9,14 @@
 
 <script>
 export default {
+  beforeUnmount(){
+    console.log('beforeUnmount: justo antes de que el componente se destruya');
+    
+  },
+  unmounted(){
+    console.log('unmounted: se ejecuta cuando fue removido del DOM');
+    
+  },
     props:{
         pokemonId: {
             type:Number,
