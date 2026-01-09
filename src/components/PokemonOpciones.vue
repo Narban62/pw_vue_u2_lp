@@ -1,16 +1,27 @@
 <template>
   <div class="opciones_container">
     <ul>
-      <li>Pokemon 1</li>
-      <li>Pokemon 2</li>
-      <li>Pokemon 3</li>
-      <li>Pokemon 4</li>
+      <li v-on:click="pasarPadre(pokemon.id)" v-for="pokemon in listaPokemons" :key="pokemon.id">{{ pokemon.nombre }}</li>
+    
     </ul>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props:{
+    listaPokemons:{
+      type:Array,
+      required:true
+    }
+  },
+  methods:{
+    pasarPadre(id){
+      this.$emit('seleccionado',id)
+    },
+  }
+
+};
     
 </script>
 

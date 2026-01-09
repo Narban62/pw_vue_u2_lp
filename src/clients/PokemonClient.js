@@ -12,36 +12,44 @@ const obtenerVectorNumerico = () => {
     return vector;
 }
 
-const ObtenetVectorPokemon = (vectorNumerico) => {
-    const data1 = consumirAPI(vectorNumerico[0]);
-    const data2 = consumirAPI(vectorNumerico[1]);
-    const data3 = consumirAPI(vectorNumerico[2]);
-    const data4 = consumirAPI(vectorNumerico[3]);
+const ObtenetVectorPokemon = async(vectorNumerico) => {
+    const data1 = await consumirAPI(vectorNumerico[0]);
+    const data2 = await consumirAPI(vectorNumerico[1]);
+    const data3 = await consumirAPI(vectorNumerico[2]);
+    const data4 = await consumirAPI(vectorNumerico[3]);
 
     const obj1= {
         nombre:data1.name,
         id:data1.id
     }
     const obj2= {
-        nombre:data1.name,
-        id:data1.id
+        nombre:data2.name,
+        id:data2.id
     }
     const obj3= {
-        nombre:data1.name,
-        id:data1.id
+        nombre:data3.name,
+        id:data3.id
     }
     const obj4= {
-        nombre:data1.name,
-        id:data1.id
+        nombre:data4.name,
+        id:data4.id
     }
+
+    return [obj1,obj2,obj3,obj4];
+}
+
+export async function  obtenerPokemonFachada() {
+    const vec = obtenerVectorNumerico();
+    return await ObtenetVectorPokemon(vec);
+}
+
+export function obtenerAleatorioFachada(min, max) {
+    return obtenerAleatorio(min,max);
+
 }
 
 const consumirAPI = async (id) => {
     const respuesta = axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.data)
-    console.log(respuesta);
     return respuesta;
 }
 
-export async function consumirAPIFacade() {
-    return await consumirAPI();
-}
